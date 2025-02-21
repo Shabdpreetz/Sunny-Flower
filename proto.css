@@ -1,0 +1,426 @@
+/* Reset default styles */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Onest", serif;
+}
+
+
+
+/* Sale Banner */
+.upper-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #FFD300;
+  color: white;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.sale-banner {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sale-banner span {
+  font-weight: 500;
+  color: black;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Header Section */
+.details {
+  /* background: #a07a7a; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 52px;
+}
+
+.logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex: 1;
+}
+
+.logo img {
+  max-width: 134.41px;
+  height: 30px;
+}
+
+.details-icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  gap: 15px;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+}
+
+.hamburger-menu img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #1234; */
+  padding: 10px 52px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.contain-links {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  padding: 10px 5px;
+  white-space: nowrap;
+}
+
+/* Flowers Dropdown (Absolute Positioning) */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Mega Dropdown Menu */
+.mega-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  border: 2px solid black;
+  padding: 15px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  max-height: 330px;
+  overflow: hidden;
+  padding-right: 1400px;
+  column-width: 200px;
+  column-gap: 20px;
+}
+
+.dropdown:hover .mega-menu,
+.mega-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  gap: 193px;
+}
+
+/* Mega Menu Columns */
+.mega-column {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+.mega-column h3 {
+  font-size: 12px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.mega-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mega-column ul li {
+  padding: 5px 0;
+  break-inside: avoid;
+  font-size: 14px;
+}
+
+.mega-column ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.mega-column ul li a:hover {
+  color: #a07a7a;
+}
+
+/* Show Mega Menu on Hover */
+.dropdown:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  /* display: flex; */
+  
+}
+
+/* Underline Effect on 'Flowers' */
+.nav-links .dropdown {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-links .dropdown > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff4500;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links .dropdown:hover > a::after {
+  transform: scaleX(1);
+}
+
+.set-column{
+    column-count: 2;
+    column-gap: 140px;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.active {
+    left: 0;
+}
+
+.account-header {
+    background: #FFD300;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-header a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.nav-item {
+    border-bottom: 1px solid #eee;
+}
+
+.nav-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-item.has-submenu > a::after {
+    content: "›";
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.nav-item.active > a::after {
+    transform: rotate(90deg);
+}
+
+.service-section {
+    padding: 10px 0;
+    border-top: 8px solid #f5f5f5;
+}
+
+.service-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Hamburger button styles */
+.hamburger-menu {
+    cursor: pointer;
+    padding: 15px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1265px) {
+  .hamburger-menu {
+    display: block;
+  }
+  .navbar{
+    display: none;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: auto;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .mega-menu {
+    position: static;
+    display: none;
+    max-height: none;
+    padding-right: 0;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dropdown:hover .mega-menu {
+    display: block;
+  }
+
+  .mega-menu.active {
+    display: flex;
+  }
+
+  .details {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 19px 50px;
+  }
+
+
+  .logo {
+    justify-content: center;
+  }
+  .mega-menu {
+    padding-right: 800px;
+  }
+  .search{
+    display: none;
+  }
+  .logo{
+    justify-content: end;
+  }
+  .hamburger-menu h1{
+    padding-right: 18px;
+  }
+}
+
+/* ... (your existing CSS code) ... */
+
+/* Mobile submenu rules */
+.has-submenu .submenu {
+    display: none;
+  }
+  .has-submenu.active .submenu {
+    display: block;
+  }
+  
+  /* ... (rest of your CSS) ... */
+  
+
+@media screen and (max-width: 1300px) {
+  .mega-menu {
+    padding-right: 980px;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+    .mega-menu {
+      padding-right: 980px;
+    }
+    .dropdown:hover .mega-menu,
+.mega-menu.active {
+  
+  gap: 92px;
+}
+.set-column{
+    column-gap: 72px;
+}
+  }
+
