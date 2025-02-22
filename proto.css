@@ -134,10 +134,11 @@
   position: absolute;
   top: 60px;
   left: 0;
+  display: flex;
   background: white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   padding: 15px;
   opacity: 0;
   visibility: hidden;
@@ -145,9 +146,10 @@
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   max-height: 330px;
   overflow: hidden;
-  padding-right: 1400px;
+  padding-right: 1575px;
   column-width: 200px;
   column-gap: 20px;
+  width: 1250px;
 }
 
 .dropdown:hover .mega-menu,
@@ -190,6 +192,7 @@
   color: black;
   font-size: 14px;
   transition: color 0.3s ease;
+  padding: 1px;
 }
 
 .mega-column ul li a:hover {
@@ -218,20 +221,46 @@
   bottom: 0;
   width: 100%;
   height: 2px;
-  background-color: #ff4500;
+  background-color: black;
   transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .nav-links .dropdown:hover > a::after {
   transform: scaleX(1);
 }
 
-.set-column{
-    column-count: 2;
-    column-gap: 140px;
+.set-column1{
+    /* column-count: 2;
+    column-gap: 140px; */
+    display: flex;
+    width: 380px !important;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: start;
+    align-items: start;
+    gap: 140px;
+    
+    li{
+      width: 40%;
+    }
 }
 
+.set-column2{
+  /* column-count: 2;
+  column-gap: 140px; */
+  display: flex;
+  width: 330px !important;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: start;
+  align-items: start;
+  gap: 72px;
+  
+  li{
+    width: 40%;
+  }
+}
 .mobile-menu {
     position: fixed;
     top: 0;
@@ -324,6 +353,102 @@
     padding: 15px;
 }
 
+.img-text-set li{
+  display: flex;
+  /* flex-direction: column; */
+
+}
+
+
+.hero{
+  display: flex;
+  height: 680px;
+  width: 50%;
+  gap: 110px;
+  margin-left: 52px;
+    margin-right: 52px;
+  /* align-items: center; */
+/* justify-content: space-between; */
+  /* justify-items: center; */
+  width: auto;
+  /* background: #ad8f8f; */
+}
+
+.hero-image img{
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.hero-detail{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 20px;
+}
+.hero-heading{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.hero-heading h1{
+  /* background-color: #333; */
+  /* padding: 10px 214px; */
+  font-size: 54px;
+  width: 424px;
+  height: 120px;
+  line-height: 60px;
+  padding: 1px;
+  align-self: anchor-center;
+}
+
+.hero-heading p{
+  align-self: anchor-center;
+  text-wrap: wrap;
+  padding: 10px;
+  font-size: 18px;
+  line-height: 30px;
+  /* background: red; */
+  width: 420px;
+
+}
+
+.button-set{
+  display: flex;
+  /* background: #3f9b68; */
+  padding: 13px 289px 15px 4px;
+}
+
+.button-set button{
+  border: none;
+  background: white;
+  height: 32px;
+  width: 117px;
+}
+
+.location{
+  display: flex;
+  width: 426px;
+  padding: 13px;
+  /* background: #381c58; */
+  gap: 10px;
+}
+
+.location p{
+  width: 372px;
+  height: 60px;
+  font-weight: 400;
+}
+.location-image{
+  display: flex;
+  gap: 40px;
+}
+iframe{
+  width: 194px;
+  height: 184px;
+  border-radius: 12px;
+}
+
 
 /* Responsive Design */
 @media (max-width: 1265px) {
@@ -335,7 +460,8 @@
   }
 
   .nav-links {
-    display: none;
+    /* display: none; */
+    display: contents;
     flex-direction: column;
     width: auto;
     position: absolute;
@@ -413,14 +539,34 @@
 @media screen and (max-width: 1680px) {
     .mega-menu {
       padding-right: 980px;
+      width: 1425px;
     }
     .dropdown:hover .mega-menu,
 .mega-menu.active {
   
-  gap: 92px;
+  gap: 153px;
 }
-.set-column{
-    column-gap: 72px;
+.set-column1{
+    width: 300px !important;
+    gap: 68px;
+}
+.set-column2{
+  width: 335px !important;
+  gap: 77px;
 }
   }
 
+
+  @media screen and (max-width: 1480px) {
+    
+    .mega-menu {
+      /* padding-right: 1200px; */
+      width: 1200px;
+      /* width: 900px; */
+    }
+    .dropdown:hover .mega-menu,
+    .mega-menu.active {
+      
+      gap: 96px;
+    }
+  }

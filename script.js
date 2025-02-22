@@ -58,7 +58,9 @@ function closeBanner() {
   
     // Prevent clicks inside the submenu from bubbling up.
     document.querySelectorAll('.submenu').forEach(submenu => {
-      submenu.addEventListener('click', (e) => e.stopPropagation());
+      submenu.addEventListener('click', (e) => {e.stopPropagation()
+        
+      });
     });
   });
   
