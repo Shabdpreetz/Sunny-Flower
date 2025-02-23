@@ -5,7 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Onest", serif;
+  font-family: "Onest";
 }
 
 
@@ -100,6 +100,7 @@
   padding: 0;
   flex-grow: 1;
 }
+
 
 .contain-links {
   display: flex;
@@ -207,6 +208,32 @@
   /* display: flex; */
   
 }
+
+
+.contain-links {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.contain-links::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.contain-links:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+
 
 /* Underline Effect on 'Flowers' */
 .nav-links .dropdown {
@@ -331,7 +358,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #333;
+    color: #333;  
     text-decoration: none;
     font-size: 14px;
 }
@@ -364,7 +391,7 @@
   display: flex;
   height: 680px;
   width: 50%;
-  gap: 110px;
+  gap: 160px;
   margin-left: 52px;
     margin-right: 52px;
   /* align-items: center; */
@@ -375,9 +402,17 @@
 }
 
 .hero-image img{
-  width: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.hero-image{
+  flex: 1;
   height: auto;
-  object-fit: contain;
+  width: 70%;
+  object-fit: cover;
 }
 .hero-detail{
   display: flex;
@@ -396,6 +431,7 @@
   /* padding: 10px 214px; */
   font-size: 54px;
   width: 424px;
+  margin-left: 6px;
   height: 120px;
   line-height: 60px;
   padding: 1px;
@@ -404,6 +440,7 @@
 
 .hero-heading p{
   align-self: anchor-center;
+  /* margin-left: 6px; */
   text-wrap: wrap;
   padding: 10px;
   font-size: 18px;
@@ -416,20 +453,23 @@
 .button-set{
   display: flex;
   /* background: #3f9b68; */
-  padding: 13px 289px 15px 4px;
+  padding: 13px 275px 15px 4px;
 }
 
 .button-set button{
   border: none;
   background: white;
+  font-size: 18px;
   height: 32px;
-  width: 117px;
+  width: 128px;
 }
 
 .location{
   display: flex;
   width: 426px;
   padding: 13px;
+  align-items: center;
+
   /* background: #381c58; */
   gap: 10px;
 }
@@ -437,16 +477,25 @@
 .location p{
   width: 372px;
   height: 60px;
+  line-height: 30px;
   font-weight: 400;
 }
 .location-image{
   display: flex;
   gap: 40px;
 }
+
+.location-image img{
+    border-radius: 12px;
+}
 iframe{
   width: 194px;
   height: 184px;
   border-radius: 12px;
+}
+
+.hero-mobile{
+  display: none;
 }
 
 
@@ -458,7 +507,9 @@ iframe{
   .navbar{
     display: none;
   }
-
+  .hero{
+    height: auto;
+  }
   .nav-links {
     /* display: none; */
     display: contents;
@@ -515,6 +566,28 @@ iframe{
   .hamburger-menu h1{
     padding-right: 18px;
   }
+  .hero{
+    gap: 100px;
+  }
+  .hero-heading h1{
+    font-size: 45px;
+  }
+  .hero-heading p{
+    font-size: 14px;
+  }
+  .button-set button{
+    font-size: 14px;
+    height: 32px;
+    text-align: left;
+    width: 120px;
+  }
+  .location p{
+    width: 356px;
+    font-size: 14px;
+  }
+  .hero-image img{
+    height: 100%;
+  }
 }
 
 /* ... (your existing CSS code) ... */
@@ -570,3 +643,170 @@ iframe{
       gap: 96px;
     }
   }
+
+
+
+
+
+  @media screen and (max-width:620px){
+    /* .hero{
+      display: none;
+    } */
+    .hero-detail{
+      display: none;
+    }
+
+    .hero-heading{
+      display: none;
+    }
+
+    .location{
+      display: none;
+    }
+  }
+  
+
+  @media screen and (max-width:560px){
+    .sale-banner span{
+      font-size: 8px;
+    }
+  }
+
+  @media screen and (max-width:400px){
+    .hamburger-menu h1{
+      font-size: 12px;
+     
+    }
+    .hamburger-menu{
+      padding-right: 31px;
+    }
+    .details{
+      padding: 19px 8px;
+      font-size: 12px;
+    }
+  }
+
+
+
+  @media screen and (max-width: 1200px){
+ 
+
+    .hero-heading h1{
+      font-size: 35px;
+      align-self: flex-start;
+        width: 289px;
+    }
+
+    .hero-heading p{
+      
+      font-size: 12px;
+      align-self: flex-start;
+      width: 293px;
+
+  }
+  .hero-heading{
+    align-self: self-start;
+  }
+    
+    .button-set{
+      align-self: flex-start;
+    padding: 12px 98px 15px 4px
+    }
+    .button-set buttton{
+      margin-left: 5px;
+    }
+    .location{
+      width: 327px;
+      align-self: flex-start;
+    }
+    .location{
+      font-size: 12px;
+      gap: 11px;
+    }
+    .location-image img{
+      width: 150px;
+    }
+    .location-image iframe{
+      width: 150px;
+      height: 150px;
+    }
+    .location p{
+      font-size: 12px;
+    }
+    .hero-image img{
+      height: 100%;
+    }
+    .hero{
+      gap: 60px;
+    }
+    .button-set{
+      padding: 11px 60px 15px 4px;
+    }
+  }
+
+
+  @media  screen and (max-width: 1024px) {
+    
+    /* .hero{
+      display: none;
+    } */
+
+    .hero-detail{
+      display: none;
+    }
+
+    .hero-heading{
+      display: none;
+    }
+
+    .location{
+      display: none;
+    }
+
+    .hero-image{
+    height: -webkit-fill-available;
+    }
+  }
+
+
+ @media screen and (max-width: 600px) {
+  
+  .hero-image img {
+    height: 50%;
+    width: -webkit-fill-available;
+    object-fit: contain;
+}
+}
+ 
+
+@media screen and (max-width: 375px) {
+
+  .hero{
+    display: none;
+  }
+  
+.hero-mobile{
+  display: block;
+  width: auto;
+  /* overflow: hidden; */
+}
+
+
+}
+
+@media screen and (max-width : 320px) {
+  
+  .hero-mobile img{
+    /* object-fit: cover; */
+    width: 320px;
+  }
+}
+
+
+@media screen and (max-width:768px){
+ 
+  .hero{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
