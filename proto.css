@@ -8,6 +8,12 @@
   font-family: "Onest";
 }
 
+:root {
+  --card-width: clamp(96px, 25vw, 357px);   /* Minimum 96px, maximum 357px */
+  --card-height: clamp(136px, 30vw, 427px);  /* Minimum 136px, maximum 427px */
+  --gap: clamp(8px, 2vw, 20px);              /* Gap scales between 8px and 20px */
+}
+
 
 
 /* Sale Banner */
@@ -499,6 +505,135 @@ iframe{
 }
 
 
+
+/* swiper sectionn css  */
+
+.container {
+  /* max-width: 1400px; */
+  width: auto;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.header h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+/* Pagination Dots (Fixed 3 dots) */
+.custom-pagination {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  min-width: 100px;
+}
+.custom-pagination .pagination-dot {
+  width: 8px;
+  height: 8px;
+  background: black;
+  opacity: 0.2;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.custom-pagination .pagination-dot:hover::before {
+  content: "";
+  position: absolute;
+  top: -5.5px;
+  left: -5.5px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+.custom-pagination .active {
+  opacity: 1;
+}
+.custom-pagination .active::before {
+  content: "";
+  position: absolute;
+  top: -5.5px;
+  left: -5.5px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+/* Slider Container – set width to exactly show 3.5 cards */
+.swiper {
+  position: relative;
+  overflow: hidden;
+  /* Compute container width: 3.5 cards + 3 gaps */
+  width: calc(var(--card-width) * 3.5 + var(--gap) * 3);
+  margin: auto;
+}
+.swiper-wrapper {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+/* Each slide uses fluid sizing */
+.swiper-slide {
+  flex: 0 0 var(--card-width);
+  height: var(--card-height);
+  margin-right: var(--gap);
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.swiper-slide:last-child {
+  margin-right: 0;
+}
+.swiper-slide:hover {
+  transform: translateY(-5px);
+}
+/* Card Content */
+.image-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.image-container img {
+  width: 100%;
+  display: block;
+}
+.category-button {
+  margin-top: 12px;
+  background: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.category-button:hover {
+  background: #f1f1f1;
+}
+.category-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* swiper sectionn css  end*/
+
+
 /* Responsive Design */
 @media (max-width: 1265px) {
   .hamburger-menu {
@@ -802,7 +937,6 @@ iframe{
 }
 
 
-}
 
 @media screen and (max-width : 320px) {
   
@@ -820,3 +954,11 @@ iframe{
     margin-right: 15px;
   }
 }
+
+
+/* swiper section responsive css */
+
+
+
+
+/* swiper section responsive css end */
