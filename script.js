@@ -1,88 +1,80 @@
 // Closes the sale banner
 function closeBanner() {
-    document.getElementById("upper-wrap").style.display = "none";
+  document.getElementById("upper-wrap").style.display = "none";
+}
+  
+// Toggle the mobile menu and overlay
+function toggleMobileMenu() {
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.overlay');
+  mobileMenu.classList.toggle('active');
+  overlay.style.display = mobileMenu.classList.contains('active') ? 'block' : 'none';
+}
+  
+document.addEventListener("DOMContentLoaded", function () {
+  // --- Desktop Mega Menu Functionality ---
+  const flowerMenu = document.getElementById("flower-menu");
+  const megaMenu = document.querySelector('.mega-menu');
+  
+  if (flowerMenu && megaMenu) {
+    flowerMenu.addEventListener("click", function (event) {
+      event.preventDefault();
+      megaMenu.classList.toggle("active");
+      event.stopPropagation();
+    });
   }
   
-  // Toggle the mobile menu and overlay
-  function toggleMobileMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.overlay');
-    mobileMenu.classList.toggle('active');
-    overlay.style.display = mobileMenu.classList.contains('active') ? 'block' : 'none';
+  document.addEventListener("click", function (event) {
+    if (flowerMenu && megaMenu &&
+        !flowerMenu.contains(event.target) &&
+        !megaMenu.contains(event.target)) {
+      megaMenu.classList.remove("active");
+    }
+  });
+  
+  if (megaMenu) {
+    megaMenu.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
   }
   
-  document.addEventListener("DOMContentLoaded", function () {
-    // --- Desktop Mega Menu Functionality ---
-    const flowerMenu = document.getElementById("flower-menu");
-    const megaMenu = document.querySelector('.mega-menu');
+  // --- Mobile Submenu Functionality ---
+  const submenuLinks = document.querySelectorAll('.has-submenu > a');
+  submenuLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent link navigation
+      const parent = this.parentElement;
+      parent.classList.toggle('active');
   
-    if (flowerMenu && megaMenu) {
-      flowerMenu.addEventListener("click", function (event) {
-        event.preventDefault();
-        megaMenu.classList.toggle("active");
-        event.stopPropagation();
-      });
-    }
-  
-    document.addEventListener("click", function (event) {
-      if (flowerMenu && megaMenu &&
-          !flowerMenu.contains(event.target) &&
-          !megaMenu.contains(event.target)) {
-        megaMenu.classList.remove("active");
-      }
-    });
-  
-    if (megaMenu) {
-      megaMenu.addEventListener("click", function (event) {
-        event.stopPropagation();
-      });
-    }
-  
-    // --- Mobile Submenu Functionality ---
-    // Attach click events to anchors directly inside .has-submenu elements.
-    const submenuLinks = document.querySelectorAll('.has-submenu > a');
-    submenuLinks.forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent link navigation
-        const parent = this.parentElement;
-        parent.classList.toggle('active');
-  
-        // Optional: close other submenus when one is opened
-        document.querySelectorAll('.has-submenu').forEach(item => {
-          if (item !== parent) {
-            item.classList.remove('active');
-          }
-        });
-      });
-    });
-  
-    // Prevent clicks inside the submenu from bubbling up.
-    document.querySelectorAll('.submenu').forEach(submenu => {
-      submenu.addEventListener('click', (e) => {e.stopPropagation()
-        
+      // Optional: close other submenus when one is opened
+      document.querySelectorAll('.has-submenu').forEach(item => {
+        if (item !== parent) {
+          item.classList.remove('active');
+        }
       });
     });
   });
   
-
-
-
-
-  // swiper section js start
-
+  document.querySelectorAll('.submenu').forEach(submenu => {
+    submenu.addEventListener('click', (e) => { e.stopPropagation(); });
+  });
+  
+  
+  // --- Swiper Section JS Start ---
+  
   const categories = [
-    { img: 'https://picsum.photos/seed/1/100/100', title: 'Birthday Flowers', link: 'https://example.com/birthday' },
-    { img: 'https://picsum.photos/seed/2/100/100', title: 'Get Well Flowers', link: 'https://example.com/getwell' },
-    { img: 'https://picsum.photos/seed/3/100/100', title: 'Sympathy', link: 'https://example.com/sympathy' },
-    { img: 'https://picsum.photos/seed/4/100/100', title: 'Love & Romance', link: 'https://example.com/love' },
-    { img: 'https://picsum.photos/seed/5/100/100', title: 'Anniversary', link: 'https://example.com/anniversary' },
-    { img: 'https://picsum.photos/seed/6/100/100', title: 'New Baby', link: 'https://example.com/newbaby' },
-    { img: 'https://picsum.photos/seed/7/100/100', title: 'Thank You', link: 'https://example.com/thankyou' },
-    { img: 'https://picsum.photos/seed/8/100/100', title: 'Congratulations', link: 'https://example.com/congratulations' },
-    { img: 'https://picsum.photos/seed/9/100/100', title: 'Get Well Soon', link: 'https://example.com/getwellsoon' },
-    { img: 'https://picsum.photos/seed/10/100/100', title: 'Sorry', link: 'https://example.com/sorry' },
-    { img: 'https://picsum.photos/seed/11/100/100', title: 'Miss You', link: 'https://example.com/missyou' },
-    { img: 'https://picsum.photos/seed/12/100/100', title: 'Good Luck', link: 'https://example.com/goodluck' }
+    { img: 'assests/birthdayFlower.svg', mobileImg: 'assests/mobileBirthdayFlower.svg', title: 'Birthday Flowers', link: '#' },
+    { img: 'assests/getWellFlower.svg', mobileImg: 'assests/mobileGetWell.svg', title: 'Get Well Flowers', link: '#' },
+    { img: 'assests/sympathy.svg', mobileImg: 'assests/mobileSympathy.svg', title: 'Sympathy', link: '#' },
+    { img: 'assests/loveAndRomance.svg', mobileImg: 'assests/mobileLove.svg', title: 'Love & Romance', link: '#' },
+    { img: 'assests/anniversary.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Anniversary', link: '#' },
+    { img: 'assests/newBaby.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'New Baby', link: '#' },
+    { img: 'assests/thankYou.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Thank You', link: '#' },
+    { img: 'assests/congratulations.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Congratulations', link: '#' },
+    { img: 'assests/getWellSoon.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Get Well Soon', link: '#' },
+    { img: 'assests/sorry.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Sorry', link: '#' },
+    { img: 'assests/missYou.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Miss You', link: '#' },
+    { img: 'assests/goodLuck.svg', mobileImg: 'assests/birthdayFlower-mobile.svg', title: 'Good Luck', link: '#' }
   ];
   
   const swiperWrapper = document.getElementById('swiper-wrapper');
@@ -95,17 +87,28 @@ function closeBanner() {
         <div class="image-container">
           <img src="${category.img}" alt="${category.title}" />
         </div>
-        <button class="category-button">${category.title}</button>
+        <h3 class="category-button">${category.title}</h3>
       </a>
     `;
     swiperWrapper.appendChild(slide);
   });
   
-  /* --- Custom Slider Functionality with Touch Support --- */
-  const swiper = document.getElementById('swiper');
+  // --- Mobile Screen Image Update ---
+  function updateImages() {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    document.querySelectorAll('.swiper-slide img').forEach((img, index) => {
+      img.src = isMobile ? categories[index].mobileImg : categories[index].img;
+    });
+  }
+  updateImages();
+  window.addEventListener('resize', updateImages);
+  
+  // --- Custom Slider Functionality with Touch Support and Pagination ---
+  
+  const swiper = document.getElementById('swiper'); // Ensure your swiper container has id="swiper"
   const paginationContainer = document.querySelector('.custom-pagination');
   
-  // Force slider to have exactly 3 pages (3 dots)
+  // Number of pagination dots (pages)
   const groups = 3;
   let currentGroup = 0;
   
@@ -120,26 +123,32 @@ function closeBanner() {
     paginationContainer.innerHTML = "";
     for (let i = 0; i < groups; i++) {
       const dot = document.createElement('div');
-      dot.classList.add('pagination-dot');
-      if(i === 0) dot.classList.add('active');
+      dot.classList.add('swiper-pagination-bullet');
+      if (i === 0) dot.classList.add('swiper-pagination-bullet-active');
       dot.addEventListener('click', () => {
         currentGroup = i;
         snapToGroup();
         updatePagination();
+        prevTranslate = -currentGroup * swiper.clientWidth;
       });
       paginationContainer.appendChild(dot);
     }
   }
   
   function updatePagination() {
-    const dots = document.querySelectorAll('.custom-pagination .pagination-dot');
+    const dots = document.querySelectorAll('.custom-pagination .swiper-pagination-bullet');
     dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentGroup);
+      if (index === currentGroup) {
+        dot.classList.add('swiper-pagination-bullet-active');
+      } else {
+        dot.classList.remove('swiper-pagination-bullet-active');
+      }
     });
   }
   
-  /* Touch (Swipe) Support */
+  // --- Touch (Swipe) Support ---
   let startX = 0, currentTranslate = 0, prevTranslate = 0, isDragging = false;
+  
   swiper.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].clientX;
@@ -150,13 +159,21 @@ function closeBanner() {
     if (!isDragging) return;
     const currentX = e.touches[0].clientX;
     const deltaX = currentX - startX;
-    currentTranslate = prevTranslate + deltaX;
+    // Calculate new translate value and clamp it within boundaries:
+    const containerWidth = swiper.clientWidth;
+    const maxTranslate = 0; // cannot drag right beyond first slide
+    const minTranslate = -((groups - 1) * containerWidth); // cannot drag left beyond last group
+    let newTranslate = prevTranslate + deltaX;
+    newTranslate = Math.min(maxTranslate, Math.max(minTranslate, newTranslate));
+    currentTranslate = newTranslate;
     swiperWrapper.style.transform = `translateX(${currentTranslate}px)`;
+    e.preventDefault();
   });
   
   swiper.addEventListener('touchend', () => {
     isDragging = false;
     const movedBy = currentTranslate - prevTranslate;
+    // If swipe exceeds 50px threshold, update currentGroup accordingly
     if (Math.abs(movedBy) > 50) {
       if (movedBy < 0 && currentGroup < groups - 1) {
         currentGroup++;
@@ -172,12 +189,9 @@ function closeBanner() {
   window.addEventListener('resize', () => {
     snapToGroup();
     prevTranslate = -currentGroup * swiper.clientWidth;
-    // (Optional) Recreate pagination if needed
   });
   
-  // Initialize
+  // --- Initialize Swiper Slider ---
   createPagination();
   snapToGroup();
-
-
-  // swiper section js end
+});

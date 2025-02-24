@@ -8,11 +8,11 @@
   font-family: "Onest";
 }
 
-:root {
+/* :root {
   --card-width: clamp(96px, 25vw, 357px);   /* Minimum 96px, maximum 357px */
-  --card-height: clamp(136px, 30vw, 427px);  /* Minimum 136px, maximum 427px */
-  --gap: clamp(8px, 2vw, 20px);              /* Gap scales between 8px and 20px */
-}
+  /* --card-height: clamp(136px, 30vw, 427px);  Minimum 136px, maximum 427px */
+  /* --gap: clamp(8px, 2vw, 20px);              Gap scales between 8px and 20px */
+/* } */ 
 
 
 
@@ -508,128 +508,157 @@ iframe{
 
 /* swiper sectionn css  */
 
+
 .container {
-  /* max-width: 1400px; */
-  width: auto;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 95%;
+  overflow: hidden;
+  margin: 0px 3px;
+  margin-top: 27px;
+  padding: 20px 0;
 }
-/* Header */
+
+/* Header styling */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
-  position: relative;
+  margin-right: -51px;
 }
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  margin: 0px 52px;
 }
 .header h2 {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 34px;
+  color: #333;
 }
-/* Pagination Dots (Fixed 3 dots) */
-.custom-pagination {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  min-width: 100px;
-}
-.custom-pagination .pagination-dot {
-  width: 8px;
-  height: 8px;
-  background: black;
-  opacity: 0.2;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  transition: opacity 0.3s, transform 0.3s;
-}
-.custom-pagination .pagination-dot:hover::before {
-  content: "";
-  position: absolute;
-  top: -5.5px;
-  left: -5.5px;
-  width: 16px;
-  height: 16px;
-  border: 2px solid black;
-  border-radius: 50%;
-}
-.custom-pagination .active {
-  opacity: 1;
-}
-.custom-pagination .active::before {
-  content: "";
-  position: absolute;
-  top: -5.5px;
-  left: -5.5px;
-  width: 16px;
-  height: 16px;
-  border: 2px solid black;
-  border-radius: 50%;
-}
-/* Slider Container – set width to exactly show 3.5 cards */
-.swiper {
-  position: relative;
+
+/* Swiper container */
+#swiper {
+  width: 100%;
+  max-width: 100%;
   overflow: hidden;
-  /* Compute container width: 3.5 cards + 3 gaps */
-  width: calc(var(--card-width) * 3.5 + var(--gap) * 3);
-  margin: auto;
+  position: relative;
 }
-.swiper-wrapper {
+
+/* Wrapper holds the slides in a row */
+#swiper-wrapper {
   display: flex;
   transition: transform 0.3s ease;
+  width: 100%;
 }
-/* Each slide uses fluid sizing */
+
+/* Default slide layout: 3.5 card view (3 full, 1 half visible) */
 .swiper-slide {
-  flex: 0 0 var(--card-width);
-  height: var(--card-height);
-  margin-right: var(--gap);
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
+  flex: 0 0 calc(100% / 3.5);
+  /* padding: 10px; */
+  min-width: 0;
+}
+
+/* Category Card styling */
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
 }
-.swiper-slide:last-child {
-  margin-right: 0;
-}
-.swiper-slide:hover {
+.category-card:hover {
   transform: translateY(-5px);
 }
-/* Card Content */
+
+.swipper-wrapper button{
+  display: none;
+}
+
+/* Remove button from the slider */
+.category-button {
+  display: none;
+}
+
+/* Image container */
 .image-container {
-  width: 100%;
+  width: 80%;
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
 }
 .image-container img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
-.category-button {
-  margin-top: 12px;
-  background: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 20px;
-  font-size: 14px;
+
+/* Custom Pagination Dots (always visible) */
+.custom-pagination {
+  display: flex;
+  gap: 26px;
+  justify-content: flex-end;
+  min-width: 100px;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: black;
+  opacity: 1;
+  display: inline-block;
+  border-radius: 50%;
   cursor: pointer;
-  font-weight: bold;
+  transition: opacity 0.3s, transform 0.3s;
+  position: relative;
 }
-.category-button:hover {
-  background: #f1f1f1;
+
+.custom-pagination .swiper-pagination-bullet-active::before {
+  content: "";
+  position: absolute;
+  top: -5.5px;
+  left: -5.5px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid black;
+  border-radius: 50%;
 }
-.category-card {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+
+
+
+
+
+/* Fixed dimensions for smallest screens (320px) */
+/* @media (max-width: 320px) {
+  .swiper-slide {
+    flex: 0 0 96px;
+    padding: 0;
+  }
+  .category-card {
+    width: 96px;
+    height: 96px;
+  }
+  .image-container {
+    width: 96px;
+    height: 96px;
+    border-radius: 8px;
+  }
+  .image-container img {
+    width: 96px;
+    height: 96px;
+  }
+} */
+
+/* Ensure image container remains square (not circle) for 321px - 425px */
+/* @media (max-width: 425px) and (min-width: 321px) {
+  .image-container {
+    border-radius: 8px;
+  }
+} */
 
 /* swiper sectionn css  end*/
 
@@ -958,7 +987,42 @@ iframe{
 
 /* swiper section responsive css */
 
+@media screen and (max-width:768px){
+ 
+ .header{
+  display: none;
+ }
+ .category-button{
+  display: block;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  color: black;
+  min-width: 96px;
+  min-height: 32px;
+  font-size: 17px;
+}
+
+.container{
+  max-width: 100%;
+ }
+ 
+
+ .image-container img{
+  border-radius: 50%;
+ }
+
+}
 
 
+
+
+@media screen and (max-width:375px){
+ 
+ .container{
+  max-width: 100%;
+ }
+
+ }
 
 /* swiper section responsive css end */
