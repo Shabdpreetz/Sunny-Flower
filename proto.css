@@ -459,7 +459,8 @@
 .button-set{
   display: flex;
   /* background: #3f9b68; */
-  padding: 13px 275px 15px 4px;
+  /* padding: 13px 275px 15px 4px; */
+  align-self: flex-start;
 }
 
 .button-set button{
@@ -511,7 +512,7 @@ iframe{
 
 .container {
   width: 100%;
-  max-width: 95%;
+  max-width: 97%;
   overflow: hidden;
   margin: 0px 3px;
   margin-top: 27px;
@@ -629,6 +630,297 @@ iframe{
 }
 
 
+/* Top selling products css starts  */
+
+.heading-ts-products{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 72px 0px;
+}
+
+.heading-ts-products h1{
+  font-size: 52px;
+}
+
+
+
+
+
+/* Container for all products */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 20px; */
+  justify-content: space-evenly;
+}
+
+/* Product Card */
+.product-card {
+  background: #fff;
+  width: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* .product-card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+} */
+
+/* Product Image */
+.product-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Product Information */
+.product-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.product-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+/* Rating (5 stars, only rating stars in black) */
+.rating span {
+  font-size: 1rem;
+}
+
+.black-star {
+  color: black;
+}
+
+.gray-star {
+  color: #ccc;
+}
+
+/* Price */
+.price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-left: 8px;
+  font-size: 0.9rem;
+}
+
+/* View Product Button (hidden by default) */
+.view-product {
+  display: none;
+  position: absolute;
+  bottom: 31%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background: #fff;
+  color: #000;
+  padding: 8px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 1s ease-in-out;
+}
+
+/* Show button on hover */
+.product-card:hover .view-product {
+  display: inline-block;
+}
+
+
+
+.tsp-button{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  /* width: 200px; */
+  height: 115px;
+  
+}
+
+
+.tsp-button button{
+  /* width: 140px; */
+  padding: 0px 30px;
+  height: 56px;
+  background-color: #FFD300;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+
+/* Birthday Banner css Start  */
+
+
+.birthday-banner{
+  display: flex;
+  margin: 0px 110px;
+  justify-content: space-between;
+  
+  margin-top: 125px;
+}
+
+
+.birthday-banner-detail{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.birthday-banner-detail h1{
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 500;
+}
+
+
+.birthday-banner-detail p{
+  width: 435px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+
+.birthday-banner-button button{
+  border: none;
+    background: white;
+    font-size: 18px;
+    height: 32px;
+    width: 70px;
+}
+
+.birthday-banner-button{
+  display: flex;
+  width: 100px;
+}
+
+
+.birthday-banner-button {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.birthday-banner-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.birthday-banner-button:hover::after {
+  transform: scaleX(1);
+}
+
+
+
+
+
+.button-set {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.button-set::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button-set:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* Birthday Banner css end  */
+
+
+
+
+
+/* Birthday products css start  */
+
+
+.heading-birthday-products{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 72px 0px;
+}
+
+.heading-birthday-products h1{
+  font-size: 52px;
+}
+
+
+
+
+/* Birthday products css end  */
+
+.birthday-button{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: auto;
+  height: 115px;
+  
+}
+
+.birthday-button button{
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+  padding: 0px 30px;
+  height: 56px;
+  background-color: #FFD300;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+
+.vas-banner{
+  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+ 
+}
+
+
+
+/* Top selling products css end  */
 
 
 
@@ -745,6 +1037,9 @@ iframe{
     text-align: left;
     width: 120px;
   }
+
+
+  
   .location p{
     width: 356px;
     font-size: 14px;
@@ -1026,3 +1321,229 @@ iframe{
  }
 
 /* swiper section responsive css end */
+
+
+
+/* Top selling prooduct responsivness start  */
+
+
+@media screen and (max-width: 1024px) {
+  
+  .product-card{
+    width: 220px;
+  }
+
+}
+
+@media screen and (max-width: 900px) {
+  
+  .product-card{
+    width: 200px;
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  
+  .product-card{
+    width: 270px;
+  }
+
+  .price{
+    flex-direction: row-reverse;
+    gap: 10px;
+  }
+
+  .tsp-button button{
+    padding: 0px 200px;
+  }
+
+  .birthday-button button{
+    padding: 0px 200px;
+  }
+
+  
+}
+
+
+@media screen and (max-width: 550px) {
+  
+  .product-card{
+    width: 190px;
+  }
+
+  .heading-ts-products h1 {
+    font-size: 37px;
+}
+
+
+.heading-birthday-products h1 {
+  font-size: 37px;
+}
+
+.tsp-button button{
+  padding: 0px 140px;
+}
+
+.birthday-button button{
+  padding: 0px 140px;
+}
+
+}
+
+@media screen and (max-width: 425px) {
+  
+  .product-card{
+    width: 180px;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  
+  .product-card{
+    width: 140px;
+  }
+
+  .tsp-button button{
+    padding: 0px 100px;
+  }
+
+  .birthday-button button{
+    padding: 0px 100px;
+  }
+
+  .heading-ts-products h1 {
+    font-size: 27px;
+}
+
+.heading-birthday-products h1 {
+  font-size: 27px;
+}
+
+
+
+
+}
+
+
+
+@media screen and (min-width: 1250px) {
+  
+  .products-container {
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+}
+
+
+ @media screen and (min-width: 1330px) {
+  
+  .products-container {
+    gap: 40px;
+    justify-content: space-evenly;
+}
+
+}
+
+@media screen and (min-width: 1410px) and (max-width: 1440px) {
+  
+  .products-container {
+    gap: 50px;
+    justify-content: space-evenly;
+}
+
+}
+
+
+@media screen and (min-width: 1441px)  {
+  
+ .product-card{
+  flex: 0 0 calc(27% - 123px);
+ }
+
+ .products-container {
+  
+  margin: 0px 5px;
+}
+
+}
+
+
+
+
+
+/* Top selling prooduct responsivness end   */
+
+
+
+
+/* Birthday-banner responsive css starts */
+
+
+
+@media screen and (max-width: 920px) {
+  
+  .birthday-banner{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    margin: 0px 24px;
+    margin-top: 100px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  
+
+.birthday-banner-detail{
+  gap: 20px;
+}
+
+.birthday-banner-detail h1{
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.birthday-banner-detail p{
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  width: 300px;
+}
+
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 375px){
+  
+
+
+  
+  .birthday-banner-detail h1{
+    font-size: 26px;
+    line-height: 34px;
+  }
+  
+
+  
+  }
+
+
+
+
+/* Birthday-banner responsive css end */
+
+
+
+
+
+
+
+
+
