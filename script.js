@@ -206,59 +206,60 @@ document.addEventListener("DOMContentLoaded", function () {
     image: "./assests/Paste-image.svg",
     title: "Positively Fresh",
     rating: 5,
-    discountedPrice: 143.00,
-    originalPrice: 230.00
+    discountedPrice: 143.0,
+    originalPrice: 230.0,
+    sale: true // Set sale to true for demonstration
   },
   {
     image: "./assests/Paste-image.svg",
     title: "Green Bouquet",
     rating: 4,
-    discountedPrice: 99.00,
-    originalPrice: 120.00
+    discountedPrice: 99.0,
+    originalPrice: 120.0
   },
   {
     image: "./assests/Paste-image.svg",
     title: "Blue Roses",
     rating: 3,
-    discountedPrice: 75.00,
-    originalPrice: 100.00
+    discountedPrice: 75.0,
+    originalPrice: 100.0,
+    sale: true
   },
   {
     image: "./assests/Paste-image.svg",
-    title: " Roses",
+    title: "Roses",
     rating: 2,
-    discountedPrice: 65.00,
-    originalPrice: 90.00
+    discountedPrice: 65.0,
+    originalPrice: 90.0
   },
   {
     image: "./assests/Paste-image.svg",
     title: "Blue Roses",
     rating: 3,
-    discountedPrice: 75.00,
-    originalPrice: 100.00
+    discountedPrice: 75.0,
+    originalPrice: 100.0
   },
   {
     image: "./assests/Paste-image.svg",
     title: "Blue Roses",
     rating: 3,
-    discountedPrice: 75.00,
-    originalPrice: 100.00
+    discountedPrice: 75.0,
+    originalPrice: 100.0
   },
   {
     image: "./assests/Paste-image.svg",
     title: "Blue Roses",
     rating: 3,
-    discountedPrice: 75.00,
-    originalPrice: 100.00
+    discountedPrice: 75.0,
+    originalPrice: 100.0
   },
   {
     image: "./assests/Paste-image.svg",
     title: "Blue Roses",
     rating: 3,
-    discountedPrice: 75.00,
-    originalPrice: 100.00
+    discountedPrice: 75.0,
+    originalPrice: 100.0
   }
-
 ];
 
 // Function to generate star ratings
@@ -266,37 +267,82 @@ function generateStars(rating) {
   let stars = "";
   for (let i = 0; i < 5; i++) {
     if (i < rating) {
-      stars += '<span class="black-star">★</span>'; // Black for actual rating
+      stars += '<span class="black-star">★</span>';
     } else {
-      stars += '<span class="gray-star">★</span>'; // Gray for remaining stars
+      stars += '<span class="gray-star">★</span>';
     }
   }
   return stars;
 }
 
-// Inject Cards into HTML
 const container = document.getElementById("products-container");
 
 products.forEach((product) => {
   const card = document.createElement("div");
   card.className = "product-card";
 
+  // Create an image container for positioning
+  const imageContainer = document.createElement("div");
+  imageContainer.className = "image-container";
+  imageContainer.style.position = "relative";
+
+  // Create the image element
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
+  imageContainer.appendChild(img);
 
+  // Check for sale property and add the label if true
+  if (product.sale) {
+    const saleLabel = document.createElement("div");
+    
+    saleLabel.className = "sale-label";
+    saleLabel.textContent = "Sale";
+    saleLabel.style.position = "absolute";
+    saleLabel.style.top = "10px";
+    saleLabel.style.left = "10px";
+    saleLabel.style.backgroundColor = "#1BA97F";
+    saleLabel.style.color = "white";
+    saleLabel.style.padding = "6px 13px";
+    saleLabel.style.fontSize = "16px";
+    saleLabel.style.borderRadius = "7px";
+    saleLabel.style.fontWeight = "600";
+    imageContainer.appendChild(saleLabel); 
+  }
+
+  function updateSaleLabelResponsiveStyles() {
+    const saleLabels = document.querySelectorAll('.sale-label');
+    if (window.matchMedia('(max-width: 425px)').matches) {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "12px";
+        label.style.padding = "6px 10px";
+      });
+    } else {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "16px";
+        label.style.padding = "6px 13px";
+      });
+    }
+  }
+  
+  // Run on initial load and update on resize
+  window.addEventListener('resize', updateSaleLabelResponsiveStyles);
+  updateSaleLabelResponsiveStyles();
+  
+
+  card.appendChild(imageContainer);
+
+  // Create product info container
   const info = document.createElement("div");
   info.className = "product-info";
 
   const rating = document.createElement("div");
   rating.className = "rating";
-  rating.innerHTML = generateStars(product.rating); // Apply star function
+  rating.innerHTML = generateStars(product.rating);
 
   const title = document.createElement("div");
   title.className = "product-title";
   title.textContent = product.title;
-
-
 
   const price = document.createElement("div");
   price.className = "price";
@@ -314,13 +360,11 @@ products.forEach((product) => {
   info.appendChild(title);
   info.appendChild(price);
 
-  card.appendChild(img);
   card.appendChild(info);
   card.appendChild(viewBtn);
 
   container.appendChild(card);
 });
-
 
 
 
@@ -336,7 +380,8 @@ const birthdayProducts = [
     title: "Birthday Bouquet",
     rating: 5,
     discountedPrice: 75.00,
-    originalPrice: 100.00
+    originalPrice: 100.00,
+    sale: true // Added sale property to show the label
   },
   {
     image: "./assests/Paste-image.svg",
@@ -381,9 +426,54 @@ birthdayProducts.forEach((product) => {
   const card = document.createElement("div");
   card.className = "product-card";
 
+  // Create an image container for positioning the sale label
+  const imageContainer = document.createElement("div");
+  imageContainer.className = "image-container";
+  imageContainer.style.position = "relative";
+
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
+  imageContainer.appendChild(img);
+
+  // Check for sale property and add the label if true
+  if (product.sale) {
+    const saleLabel = document.createElement("div");
+    saleLabel.className = "sale-label";
+    saleLabel.textContent = "Sale";
+    saleLabel.style.position = "absolute";
+    saleLabel.style.top = "10px";
+    saleLabel.style.left = "10px";
+    saleLabel.style.backgroundColor = "#1BA97F";
+    saleLabel.style.color = "white";
+    saleLabel.style.padding = "6px 13px";
+    saleLabel.style.fontSize = "16px";
+    saleLabel.style.borderRadius = "7px";
+    saleLabel.style.fontWeight = "600";
+    imageContainer.appendChild(saleLabel);
+  }
+
+  function updateSaleLabelResponsiveStyles() {
+    const saleLabels = document.querySelectorAll('.sale-label');
+    if (window.matchMedia('(max-width: 425px)').matches) {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "12px";
+        label.style.padding = "6px 10px";
+      });
+    } else {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "16px";
+        label.style.padding = "6px 13px";
+      });
+    }
+  }
+  
+  // Run on initial load and update on resize
+  window.addEventListener('resize', updateSaleLabelResponsiveStyles);
+  updateSaleLabelResponsiveStyles();
+  
+
+  card.appendChild(imageContainer);
 
   const info = document.createElement("div");
   info.className = "product-info";
@@ -412,7 +502,6 @@ birthdayProducts.forEach((product) => {
   info.appendChild(title);
   info.appendChild(price);
 
-  card.appendChild(img);
   card.appendChild(info);
   card.appendChild(viewBtn);
 
@@ -436,7 +525,8 @@ const funeralProducts = [
     title: "Sympathy Wreath",
     rating: 4,
     discountedPrice: 89.00,
-    originalPrice: 110.00
+    originalPrice: 110.00,
+    sale: true // Added sale property to show the label
   },
   {
     image: "./assests/Paste-image.svg",
@@ -481,16 +571,62 @@ funeralProducts.forEach((product) => {
   const card = document.createElement("div");
   card.className = "product-card";
 
+  // Create an image container for positioning the sale label
+  const imageContainer = document.createElement("div");
+  imageContainer.className = "image-container";
+  imageContainer.style.position = "relative";
+
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
+  imageContainer.appendChild(img);
+
+  // Check for sale property and add the label if true
+  if (product.sale) {
+    const saleLabel = document.createElement("div");
+    saleLabel.className = "sale-label";
+    saleLabel.textContent = "Sale";
+    saleLabel.style.position = "absolute";
+    saleLabel.style.top = "10px";
+    saleLabel.style.left = "10px";
+    saleLabel.style.backgroundColor = "#1BA97F";
+    saleLabel.style.color = "white";
+    saleLabel.style.padding = "6px 13px";
+    saleLabel.style.fontSize = "16px";
+    saleLabel.style.borderRadius = "7px";
+    saleLabel.style.fontWeight = "600";
+    imageContainer.appendChild(saleLabel);;
+    
+  }
+
+  function updateSaleLabelResponsiveStyles() {
+    const saleLabels = document.querySelectorAll('.sale-label');
+    if (window.matchMedia('(max-width: 425px)').matches) {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "12px";
+        label.style.padding = "6px 10px";
+      });
+    } else {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "16px";
+        label.style.padding = "6px 13px";
+      });
+    }
+  }
+  
+  // Run on initial load and update on resize
+  window.addEventListener('resize', updateSaleLabelResponsiveStyles);
+  updateSaleLabelResponsiveStyles();
+  
+
+  card.appendChild(imageContainer);
 
   const info = document.createElement("div");
   info.className = "product-info";
 
-  const rating = document.createElement("div");
-  rating.className = "rating";
-  rating.innerHTML = generateStars(product.rating);
+  const ratingEl = document.createElement("div");
+  ratingEl.className = "rating";
+  ratingEl.innerHTML = generateStars(product.rating);
 
   const title = document.createElement("div");
   title.className = "product-title";
@@ -508,11 +644,10 @@ funeralProducts.forEach((product) => {
   viewBtn.href = "#";
   viewBtn.textContent = "View Product";
 
-  info.appendChild(rating);
+  info.appendChild(ratingEl);
   info.appendChild(title);
   info.appendChild(price);
 
-  card.appendChild(img);
   card.appendChild(info);
   card.appendChild(viewBtn);
 
@@ -536,7 +671,8 @@ const getWellProducts = [
     title: "Feel Better Bouquet",
     rating: 4,
     discountedPrice: 65.00,
-    originalPrice: 80.00
+    originalPrice: 80.00,
+    sale: true // Added sale property for demonstration
   },
   {
     image: "./assests/Paste-image.svg",
@@ -579,16 +715,61 @@ getWellProducts.forEach((product) => {
   const card = document.createElement("div");
   card.className = "product-card";
 
+  // Create an image container for positioning the sale label
+  const imageContainer = document.createElement("div");
+  imageContainer.className = "image-container";
+  imageContainer.style.position = "relative";
+
   const img = document.createElement("img");
   img.src = product.image;
   img.alt = product.title;
+  imageContainer.appendChild(img);
+
+  // Check for sale property and add the label if true
+  if (product.sale) {
+    const saleLabel = document.createElement("div");
+    saleLabel.className = "sale-label";
+    saleLabel.textContent = "Sale";
+    saleLabel.style.position = "absolute";
+    saleLabel.style.top = "10px";
+    saleLabel.style.left = "10px";
+    saleLabel.style.backgroundColor = "#1BA97F";
+    saleLabel.style.color = "white";
+    saleLabel.style.padding = "6px 13px";
+    saleLabel.style.fontSize = "16px";
+    saleLabel.style.borderRadius = "7px";
+    saleLabel.style.fontWeight = "600";
+    imageContainer.appendChild(saleLabel);
+  }
+
+  function updateSaleLabelResponsiveStyles() {
+    const saleLabels = document.querySelectorAll('.sale-label');
+    if (window.matchMedia('(max-width: 425px)').matches) {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "12px";
+        label.style.padding = "6px 10px";
+      });
+    } else {
+      saleLabels.forEach(label => {
+        label.style.fontSize = "16px";
+        label.style.padding = "6px 13px";
+      });
+    }
+  }
+  
+  // Run on initial load and update on resize
+  window.addEventListener('resize', updateSaleLabelResponsiveStyles);
+  updateSaleLabelResponsiveStyles();
+  
+
+  card.appendChild(imageContainer);
 
   const info = document.createElement("div");
   info.className = "product-info";
 
-  const rating = document.createElement("div");
-  rating.className = "rating";
-  rating.innerHTML = generateStars(product.rating);
+  const ratingEl = document.createElement("div");
+  ratingEl.className = "rating";
+  ratingEl.innerHTML = generateStars(product.rating);
 
   const title = document.createElement("div");
   title.className = "product-title";
@@ -606,11 +787,10 @@ getWellProducts.forEach((product) => {
   viewBtn.href = "#";
   viewBtn.textContent = "View Product";
 
-  info.appendChild(rating);
+  info.appendChild(ratingEl);
   info.appendChild(title);
   info.appendChild(price);
 
-  card.appendChild(img);
   card.appendChild(info);
   card.appendChild(viewBtn);
 

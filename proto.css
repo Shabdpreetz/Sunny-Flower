@@ -658,6 +658,9 @@ iframe{
 /* Product Card */
 .product-card {
   background: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 250px;
   border-radius: 8px;
   overflow: hidden;
@@ -876,8 +879,28 @@ iframe{
   margin: 72px 0px;
 }
 
+.heading-owner{
+  display: flex;
+  gap: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 72px 0px;
+}
+
 .heading-birthday-products h1{
   font-size: 52px;
+  font-weight: 500;
+}
+
+.heading-owner h1{
+  font-size: 54px;
+  color: #121212;
+}
+
+.heading-owner  span{
+  font-size: 18px;
+  color: #605F5F;
 }
 
 
@@ -916,6 +939,65 @@ iframe{
     align-items: center;
     gap: 20px;
  
+}
+
+
+.owner{
+  margin: 0px 52px;
+}
+
+
+
+
+.responsive-media-container {
+  width: 100%;
+  overflow: hidden; /* Prevents any overflow */
+}
+
+.responsive-media {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+
+
+.responsive-media-container1 {
+  width: 100%;
+  overflow: hidden; /* Prevents any overflow */
+}
+
+.responsive-media1 {
+  display: none;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+
+
+.image-container {
+  position: relative;
+}
+
+.sale-label {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  font-size: 16px;
+  font-weight: 600;
+  /* width: 66px;
+  height: 34px; */
+  top: 10px;
+  left: 10px;
+  background-color: #1BA97F;
+  color: white;
+  padding: 0px ;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 3px;
 }
 
 
@@ -1381,7 +1463,15 @@ iframe{
 }
 
 
+.owner{
+  margin: 32px;
+}
+
 .heading-birthday-products h1 {
+  font-size: 37px;
+}
+
+.heading-owner h1{
   font-size: 37px;
 }
 
@@ -1399,6 +1489,26 @@ iframe{
   
   .product-card{
     width: 180px;
+  }
+
+  
+  .responsive-media {
+    display: none;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .responsive-media-container1 {
+    width: 100%;
+    overflow: hidden; /* Prevents any overflow */
+  }
+  
+  .responsive-media1 {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
   }
 
 }
@@ -1422,6 +1532,10 @@ iframe{
 }
 
 .heading-birthday-products h1 {
+  font-size: 27px;
+}
+
+.heading-owner h1 {
   font-size: 27px;
 }
 
@@ -1535,6 +1649,30 @@ iframe{
   }
 
 
+
+  @media  screen and (max-width:425px) {
+
+    .sale-label {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     
+      font-size: 16px;
+      font-weight: 600;
+      /* width: 66px;
+      height: 34px; */
+      top: 10px;
+      left: 10px;
+      background-color: #1BA97F;
+      color: white;
+      padding: 6px  10px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+    
+  }
 
 
 /* Birthday-banner responsive css end */
